@@ -1,0 +1,45 @@
+.site-footer {
+    background-color: lightblue;
+    color: black;
+    padding: 30px 0;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+
+}
+
+.centered-footer-column,
+.right-footer-column,
+.additional-footer-column {
+    max-width: 300px;
+    margin: 10px;
+}
+
+.footer-column h4,
+.additional-footer-column h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-column p,
+.additional-footer-column p {
+    margin-bottom: 8px;
+}
+
+.footer-column a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.footer-bottom {
+    margin-top: 20px;
+}
