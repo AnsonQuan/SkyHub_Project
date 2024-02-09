@@ -1,0 +1,30 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa; 
+    color: #333; 
+}
+
+.about-us-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; 
+}
+
+h1, h2 {
+    color: #007bff; 
+}
+
+p {
+    margin-bottom: 15px; 
+}
+
+ul {
+    list-style-type: square;
+    margin-left: 20px;
+}
+
+
