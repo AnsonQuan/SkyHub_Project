@@ -1,4 +1,5 @@
-// models/user.js
+// User Model
+// This file contains the user model for the application. It defines the schema for the user collection in the database and also contains a method to hash the password before saving the user to the database and a method to compare passwords for authentication.
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const { Schema } = mongoose;
