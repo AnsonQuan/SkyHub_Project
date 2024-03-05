@@ -4,17 +4,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register | SkyHub</title>
+  <title>Log In | SkyHub</title>
   <link rel="stylesheet" href="/stylesheets/login.css">
+  <script>
+    function handleLogin() {
+      // Prevent the form from submitting normally
+      event.preventDefault();
+
+      // Perform form validation if needed
+
+      // Submit the form
+      document.getElementById("loginForm").submit();
+      
+      // Redirect to the home page
+      window.location.href = "/";
+    }
+  </script>
 </head>
+
 <body>
-  <%- include partials/header.ejs %>
-  <%- include partials/navbar.ejs %>
+  <% include partials/header.ejs %>
+  <% include partials/navbar.ejs %>
 
   <section class="form-section">
     <div class="container">
-      <h2>Create Your Account</h2>
-      <form action="/login" method="POST">
+      <h2>Log In</h2>
+      <form id="loginForm" action="/login" method="POST">
         <div class="form-group">
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required>
@@ -23,12 +38,13 @@
           <label for="password">Password:</label>
           <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit" class="cta-button">Login</button>
+        <button type="button" class="cta-button" onclick="handleLogin()">Login</button>
         <button type="reset" class="cta-button">Reset</button>
       </form>
     </div>
   </section>
 
-  <%- include partials/footer.ejs %>
+  <% include partials/footer.ejs %>
 </body>
+
 </html>
