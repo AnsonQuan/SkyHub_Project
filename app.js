@@ -4,7 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-let session = require("express-session");
+/*let session = require("express-session");
 let passport = require("passport");
 let passportLocal = require("passport-local");
 let localStratergy = passportLocal.Strategy;
@@ -21,7 +21,7 @@ let mongoDB = mongoose.connection;
 mongoDB.on("error", console.error.bind(console, "Connection Error:"));
 mongoDB.once("open", () => {
   console.log("Connected to MongoDB...");
-});
+});*/
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -42,7 +42,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
 //setup express session
-app.use(
+/*app.use(
   session({
     secret: "SomeSecret",
     saveUninitialized: false,
@@ -68,7 +68,7 @@ passport.use(User.createStrategy());
 
 //serialize and deserialize user object info -encrypt and decrypt
 passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.deserializeUser(User.deserializeUser());*/
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
