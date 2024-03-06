@@ -4,7 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var mongoose = require("mongoose");
 var logger = require("morgan");
-require("dotenv").config();
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 const uri = process.env.MONGODB_URI; // Get MongoDB URI from environment variables
 
