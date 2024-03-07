@@ -1,0 +1,201 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.hero-section {
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    border-radius: 5%;
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.hero-text h1 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.hero-text p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+
+.cta-button {
+    background-color: #fff;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.popular-destinations {
+    padding: 60px 0;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.popular-destinations h2 {
+    margin-bottom: 40px;
+}
+
+.destination {
+    display: inline-block;
+    width: 31%;
+    margin-right: 2%;
+    margin-bottom: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.destination:hover {
+    transform: translateY(-5px);
+}
+
+.destination img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.destination h3 {
+    margin-top: 10px;
+    margin-bottom: 5px
+}
+
+.featured-airlines{
+    padding: 60px 0;
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+.featured-airlines h2 {
+    margin-bottom: 40px;
+}
+
+.airline{
+    display: inline-block;
+    width: 31%;
+    margin-right: 2%;
+    margin-bottom: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.airline:hover {
+    transform: translateY(-5px);
+}
+
+.airline img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.airline h3 {
+    margin-top: 10px;
+    margin-bottom: 5px
+}
+
+
+
+
+section.deals-and-promotions {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+}
+
+.deal {
+    display: inline-block;
+    width: 31%;
+    margin-right: 2%;
+    margin-bottom: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    border-radius: 25%;
+}
+.deal:hover {
+    transform: translateY(-5px);
+}
+
+.deal img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 25%;
+  
+}
+
+h3 {
+    color: #007BFF;
+    margin-top: 10px;
+}
+
+p {
+    color: #555;
+    margin-top: 10px;
+}
+
+
+
+
+
+.hero-section {
+    position: relative;
+    height: 100vh; 
+    overflow: hidden;
+}
+
+#video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff; 
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/contact.css">
+  <title>Contact Us</title>
+</head>
+
+<body>
+  <%- include partials/header.ejs %>
+
+  <%- include partials/navbar.ejs %>
+<!-- review-form.component.html -->
+<div class="container">
+    <h2>Leave a Review</h2>
+    <form (submit)="submitReview()">
+        <label for="overallRating">Overall Rating:</label>
+        <input type="number" id="overallRating" name="overallRating" [(ngModel)]="overallRating" required>
+    
+  
+      <label for="flightDetails">Flight Details:</label>
+      <input type="text" id="flightDetails" name="flightDetails" [(ngModel)]="flightDetails" required>
+  
+      <label for="bookingProcess">Booking Process:</label>
+      <input type="number" id="bookingProcess" name="bookingProcess" [(ngModel)]="bookingProcess" required>
+  
+      <label for="flightExperience">Flight Experience:</label>
+      <input type="number" id="flightExperience" name="flightExperience" [(ngModel)]="flightExperience" required>
+  
+      <label for="onTimePerformance">On-Time Performance:</label>
+      <input type="number" id="onTimePerformance" name="onTimePerformance" [(ngModel)]="onTimePerformance" required>
+  
+      <label for="baggageHandling">Baggage Handling:</label>
+      <input type="number" id="baggageHandling" name="baggageHandling" [(ngModel)]="baggageHandling" required>
+  
+      <label for="customerService">Customer Service:</label>
+      <input type="number" id="customerService" name="customerService" [(ngModel)]="customerService" required>
+  
+      <label for="safetyMeasures">Safety Measures:</label>
+      <input type="number" id="safetyMeasures" name="safetyMeasures" [(ngModel)]="safetyMeasures" required>
+  
+      <label for="valueForMoney">Value for Money:</label>
+      <input type="number" id="valueForMoney" name="valueForMoney" [(ngModel)]="valueForMoney" required>
+  
+      <label for="additionalComments">Additional Comments:</label>
+      <textarea id="additionalComments" name="additionalComments" [(ngModel)]="additionalComments" required></textarea>
+  
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const reviewForm = document.getElementById('reviewForm');
+
+      reviewForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const formData = new FormData(reviewForm);
+
+        const reviewData = {};
+        for (const [key, value] of formData.entries()) {
+          reviewData[key] = value;
+        }
+
+        // Send reviewData to server using AJAX or fetch API
+        // Example using fetch:
+        fetch('/submit-review', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(reviewData)
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Review submitted successfully:', data);
+          // Optionally, handle success response
+        })
+        .catch(error => {
+          console.error('Error submitting review:', error);
+          // Optionally, handle error
+        });
+      });
+    });
+  </script>
+  
+
+  <%- include partials/footer.ejs %>
+
+      </body>
+
+      </html>
