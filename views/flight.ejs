@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Results - SkyHub</title>
+  <link rel="stylesheet" href="/stylesheets/flights.css">
+</head>
+<body>
+  <%- include partials/header.ejs %>
+  <%- include partials/navbar.ejs %>
+
+  <div class="flights-container">
+    <h1>Search Results</h1>
+    <p>Displaying all available flights:</p>
+
+    <% if(flights && flights.length > 0) { %>
+      <div class="flights-list">
+        <% flights.forEach(function(flight) { %>
+          <div class="flight-item">
+            <div class="flight-details">
+              <span class="airline"><%= flight.airline %></span>
+              <span class="flight-number">Flight <%= flight.number %></span>
+              <span class="departure"><%= flight.departureTime %></span>
+              <span class="arrival"><%= flight.arrivalTime %></span>
+              <span class="duration">Duration: <%= flight.duration %></span>
+            </div>
+            <div class="flight-pricing">
+              <span class="price">$<%= flight.price %></span>
+              <button type="button" onclick="bookFlight('<%= flight.id %>')">Book Now</button>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } else { %>
+      <div class="no-flights">
+        <p>No flights available.</p>
+      </div>
+    <% } %>
+  </div>
+
+  <%- include partials/footer.ejs %>
+
+  <script>
+    function bookFlight(flightId) {
+      // Add JavaScript logic for booking a flight here
+      console.log("Flight booked with ID:", flightId);
+      // Redirect or call an API to book the flight
+    }
+  </script>
+</body>
+</html>

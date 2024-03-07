@@ -1,0 +1,97 @@
+/* flights.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .flights-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .flights-list {
+    margin-top: 20px;
+  }
+  
+  .flight-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #eaeaea;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .flight-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flight-details span {
+    margin: 2px 0;
+    font-size: 14px;
+  }
+  
+  .airline {
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .flight-number {
+    color: #555;
+  }
+  
+  .departure,
+  .arrival {
+    color: #444;
+  }
+  
+  .duration {
+    font-style: italic;
+    color: #666;
+  }
+  
+  .flight-pricing {
+    text-align: right;
+  }
+  
+  .price {
+    font-size: 18px;
+    color: #d9534f;
+    font-weight: bold;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  .no-flights {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+  }
+  
+  /* Add additional media queries, animations, and transitions as needed */
+  
