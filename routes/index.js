@@ -11,12 +11,15 @@ router.get("/about", function (req, res, next) {
   res.render("about", { title: "About Us" });
 });
 
+<<<<<<< HEAD
 /* GET Flights page. */
 router.get("/flight", function (req, res, next) {
   res.render("flight", { title: "Search Flights" }); 
 });
 
 
+=======
+>>>>>>> 4544dde732577b28ce694a8c4075b3cead920639
 /* GET Contact page. */
 router.get("/contact", function (req, res, next) {
   res.render("contact", { title: "Contact Us" });
