@@ -1,16 +1,56 @@
-const express = require("express");
+import express from "express";
+import Amadeus from "amadeus";
+import bodyParser from "body-parser";
+import cors from "cors";
+
 const router = express.Router();
-const axios = require("axios");
+const amadeus = new Amadeus({
+  clientId: process.env.AMADEUS_APIKEY,
+  clientSecret: process.env.AMADEUS_APISECRET,
+});
 
-// Define the base URL for the Sky Scanner API
-const BASE_URL = "https://sky-scanner3.p.rapidapi.com";
+router.use(bodyParser.json());
+router.use(
+  cors({
+    origin: "http://localhost:4200",
+  })
+);
 
-// Set the required headers for making requests to the API
-const headers = {
-  "x-rapidapi-host": "sky-scanner3.p.rapidapi.com",
-  "x-rapidapi-key": process.env.RAPIDAPI_KEY, // Your RapidAPI key stored in environment variable
-};
+router.get(`/city-and-airport-search/:parameter`, (req, res) => {
+  const parameter = req.params.parameter;
+  amadeus.referenceData.locations
+    .get({
+      keyword: parameter,
+      subType: Amadeus.location.any,
+    })
+    .then(function (response) {
+      res.send(response.result);
+    })
+    .catch(function (response) {
+      res.send(response);
+    });
+});
 
-// Define routes
+router.get(`/flight-search`, (req, res) => {
+  const originCode = req.query.originCode;
+  const destinationCode = req.query.destinationCode;
+  const dateOfDeparture = req.query.dateOfDeparture;
 
-module.exports = router;
+  // Find the cheapest flights
+  amadeus.shopping.flightOffersSearch
+    .get({
+      originLocationCode: originCode,
+      destinationLocationCode: destinationCode,
+      departureDate: dateOfDeparture,
+      adults: "1",
+      max: "7",
+    })
+    .then(function (response) {
+      res.send(response.result);
+    })
+    .catch(function (response) {
+      res.send(response);
+    });
+});
+
+export default router;
