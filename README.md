@@ -1,7 +1,7 @@
 
 # SkyHub
 
-This project is a flight booking program that allows users to book flights to destinations and track the flights itself. The project is created on the MEAN stack. This project was not made for commercial use, it is only our Software Development Project for class. All rights reserved.
+This project is a flight booking program that allows users to book flights to destinations and track the flights itself. The project is created on the MEAN stack, and utilizes the Amadeus for Developers API to retrieve flight data.  This project was not made for commercial use, it is only our Software Development Project for class. All rights reserved.
 
 
 ## Authors
