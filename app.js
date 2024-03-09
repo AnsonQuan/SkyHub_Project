@@ -6,7 +6,8 @@ var mongoose = require("mongoose");
 var logger = require("morgan");
 require('dotenv').config({ path: path.join(__dirname, '.env') });
 
-const uri = process.env.MONGODB_URI; // Get MongoDB URI from environment variables
+const uri = "mongodb+srv://jescares:jescares2024@skyhub-users.kcxdxbo.mongodb.net/?retryWrites=true&w=majority&appName=SkyHub-Users"; // Your MongoDB URI
+
 
 mongoose
   .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
