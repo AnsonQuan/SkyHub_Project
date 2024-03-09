@@ -1,23 +1,15 @@
-import express from "express";
-import Amadeus from "amadeus";
-import bodyParser from "body-parser";
-import cors from "cors";
+var express = require("express");
+var amadeus = require("amadeus");
+var router = express.Router();
 
-const router = express.Router();
-const amadeus = new Amadeus({
+const Amadeus = new amadeus({
   clientId: process.env.AMADEUS_APIKEY,
   clientSecret: process.env.AMADEUS_APISECRET,
 });
 
-router.use(bodyParser.json());
-router.use(
-  cors({
-    origin: "http://localhost:4200",
-  })
-);
-
 router.get(`/city-and-airport-search/:parameter`, (req, res) => {
   const parameter = req.params.parameter;
+  // Which cities or airports start with the parameter variable
   amadeus.referenceData.locations
     .get({
       keyword: parameter,
@@ -35,7 +27,6 @@ router.get(`/flight-search`, (req, res) => {
   const originCode = req.query.originCode;
   const destinationCode = req.query.destinationCode;
   const dateOfDeparture = req.query.dateOfDeparture;
-
   // Find the cheapest flights
   amadeus.shopping.flightOffersSearch
     .get({
@@ -53,4 +44,24 @@ router.get(`/flight-search`, (req, res) => {
     });
 });
 
-export default router;
+router.post(`/flight-confirmation`, (req, res) => {
+  const flight = req.body.flight;
+  // Confirm availability and price
+  amadeus.shopping.flightOffers.pricing
+    .post(
+      JSON.stringify({
+        data: {
+          type: "flight-offers-pricing",
+          flightOffers: [flight],
+        },
+      })
+    )
+    .then(function (response) {
+      res.send(response.result);
+    })
+    .catch(function (response) {
+      res.send(response);
+    });
+});
+
+module.exports = router;
