@@ -6,34 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register | SkyHub</title>
   <link rel="stylesheet" href="/stylesheets/register.css">
-  <script>
-    async function handleRegistration(event) {
-      event.preventDefault();
-  
-      const form = document.getElementById("registerForm");
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-  
-      try {
-        const response = await fetch('/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
-  
-        if (!response.ok) {
-          throw new Error('Registration failed');
-        }
-  
-        // If registration is successful, redirect to the login page
-        window.location.href = "/login";
-      } catch (error) {
-        alert(error.message);
-      }
-    }
-  </script>
     
 </head>
 
@@ -73,7 +45,7 @@
           <label for="confirmPassword">Confirm Password:</label>
           <input type="password" id="confirmPassword" name="confirmPassword" required>
         </div>
-        <button type="submit" class="cta-button" onclick="handleRegistration()">Register</button>
+        <button type="submit" class="cta-button">Register</button>
       </form>
     </div>
   </section>
