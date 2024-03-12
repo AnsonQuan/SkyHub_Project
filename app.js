@@ -27,7 +27,9 @@ const Amadeus = new amadeus({
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+var contactRouter = require('./routes/contact');
 var trackingRouter = require("./routes/tracking");
+
 
 var app = express();
 
@@ -52,6 +54,8 @@ app.use(
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/track", trackingRouter);
+app.use("/submit", contactRouter);
+
 
 app.get("/", (req, res) => {
   res.render("flightSearch");

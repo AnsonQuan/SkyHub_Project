@@ -1,6 +1,25 @@
 var express = require("express");
 var router = express.Router();
 
+
+function isAuthenticated(req, res, next) {
+  const token = req.cookies.token;
+
+  if (!token) {
+    const redirectTo = encodeURIComponent(req.originalUrl);
+    return res.redirect(`/login?redirectTo=${redirectTo}`);
+  }
+
+  jwt.verify(token, 'your-secret-key', (err, decoded) => {
+    if (err) {
+      const redirectTo = encodeURIComponent(req.originalUrl);
+      return res.redirect(`/login?redirectTo=${redirectTo}`);
+    }
+    req.user = decoded;
+    next();
+  });
+}
+
 /* GET Home page. */
 router.get("/", function (req, res, next) {
   res.render("index", { title: "SkyHub Website" });
@@ -30,5 +49,6 @@ router.get("/login", function (req, res, next) {
 router.get("/track", function (req, res, next) {
   res.render("track", { title: "Track a Flight" });
 });
+
 
 module.exports = router;
