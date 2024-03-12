@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+var jwt = require("jsonwebtoken");
 
 
 function isAuthenticated(req, res, next) {
@@ -31,7 +32,7 @@ router.get("/about", function (req, res, next) {
 });
 
 /* GET Contact page. */
-router.get("/contact", function (req, res, next) {
+router.get("/contact", isAuthenticated, function (req, res, next) {
   res.render("contact", { title: "Contact Us" });
 });
 
@@ -46,7 +47,7 @@ router.get("/login", function (req, res, next) {
 });
 
 /* GET Login page. */
-router.get("/track", function (req, res, next) {
+router.get("/track", isAuthenticated,function (req, res, next) {
   res.render("track", { title: "Track a Flight" });
 });
 
