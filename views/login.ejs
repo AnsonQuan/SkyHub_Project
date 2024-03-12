@@ -16,8 +16,8 @@
       // Submit the form
       document.getElementById("loginForm").submit();
       
-      // Redirect to the home page
-      window.location.href = "/";
+      // // Redirect to the home page
+      // window.location.href = "/"; // It doesn't work expectedly so remove it
     }
   </script>
 </head>
@@ -29,7 +29,7 @@
   <section class="form-section">
     <div class="container">
       <h2>Log In</h2>
-      <form id="loginForm" action="/login" method="POST">
+      <form id="loginForm" action="/users/login" method="POST">
         <div class="form-group">
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required>

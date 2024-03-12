@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var jwt = require("jsonwebtoken");
 
 function isAuthenticated(req, res, next) {
   const token = req.cookies.token;
@@ -30,7 +31,7 @@ router.get("/about", function (req, res, next) {
 });
 
 /* GET Contact page. */
-router.get("/contact", function (req, res, next) {
+router.get("/contact", isAuthenticated, function (req, res, next) {
   res.render("contact", { title: "Contact Us" });
 });
 

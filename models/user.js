@@ -47,13 +47,15 @@ userSchema.pre("save", async function (next) {
   }
 });
 
-// Method to compare passwords for authentication
-userSchema.methods.comparePassword = function (candidatePassword, callback) {
-  bcrypt.compare(candidatePassword, this.password, (error, isMatch) => {
-    if (error) {
-      return callback(error);
-    }
-    callback(null, isMatch);
+// Method to compare passwords for authentication - modified by Dahye
+userSchema.methods.comparePassword = function (candidatePassword) {
+  return new Promise((resolve, reject) => {
+    bcrypt.compare(candidatePassword, this.password, (error, isMatch) => {
+      if (error) {
+        return reject(error);
+      }
+      resolve(isMatch);
+    });
   });
 };
 
