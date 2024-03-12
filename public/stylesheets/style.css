@@ -9,15 +9,22 @@ a {
 
 #menu {
   background: #0099cc;
-  height: 45px;
+  height: 73px;
   padding-left: 18px;
-  border-radius: 10px;
 }
+
+#menu .login-item {
+  position: absolute;
+  right: 0; 
+  top: 0;
+}
+
 #menu ul,
 #menu li {
   margin: 0 auto;
   padding: 0;
   list-style: none;
+  position: relative;
 }
 #menu ul {
   width: 100%;
@@ -30,18 +37,39 @@ a {
 #menu a {
   display: block;
   line-height: 45px;
-  padding: 0 14px;
+  padding: 10px 20px;
   text-decoration: none;
   color: #ffffff;
-  font-size: 16px;
+  font-size: 17px;
+  border-radius: 5px; 
+  transition: background-color 0.3s ease;
+  position: relative; /* Set position to relative for pseudo-element positioning */
 }
+
 #menu a.dropdown-arrow:after {
   content: "\25BE";
   margin-left: 5px;
 }
-#menu li a:hover {
-  color: #0099cc;
+
+#menu a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
   background: #f2f2f2;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -1px; 
+  left: 0;
+}
+
+#menu li a:hover::after {
+  width: 100%; 
+}
+
+#menu li a:hover {
+  color: #f2f2f2;
+  text-decoration: none; 
 }
 #menu input {
   display: none;

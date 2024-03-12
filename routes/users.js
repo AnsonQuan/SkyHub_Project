@@ -1,8 +1,9 @@
 // Desc: User routes
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user.js");
-const jwt = require("jsonwebtoken");
+
+const jwt = require("jsonwebtoken"); // importing 'jsonwebtoken' package (but if it is unnecessary, [;ease delete this one)
+const User = require("../models/user");
 
 // User login route
 router.post("/login", async (req, res) => {

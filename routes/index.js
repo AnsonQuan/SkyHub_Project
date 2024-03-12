@@ -1,5 +1,6 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+
 
 function isAuthenticated(req, res, next) {
   const token = req.cookies.token;
@@ -42,6 +43,11 @@ router.get("/register", function (req, res, next) {
 /* GET Login page. */
 router.get("/login", function (req, res, next) {
   res.render("login", { title: "Login" });
+});
+
+/* GET Login page. */
+router.get("/track", function (req, res, next) {
+  res.render("track", { title: "Track a Flight" });
 });
 
 

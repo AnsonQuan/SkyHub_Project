@@ -8,9 +8,6 @@ var mongoose = require("mongoose");
 var logger = require("morgan");
 var cors = require("cors");
 require("dotenv").config();
-const session = require('express-session');
-const flash = require('connect-flash');
-
 
 const uri = process.env.MONGODB_URI; // Get MongoDB URI from environment variables
 
@@ -31,6 +28,8 @@ const Amadeus = new amadeus({
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var contactRouter = require('./routes/contact');
+var trackingRouter = require("./routes/tracking");
+
 
 var app = express();
 
@@ -51,16 +50,12 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
-app.use(session({
-  secret: 'secret',
-  saveUninitialized: true,
-  resave: true
-}));
-app.use(flash());
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
+app.use("/track", trackingRouter);
 app.use("/submit", contactRouter);
+
 
 app.get("/", (req, res) => {
   res.render("flightSearch");

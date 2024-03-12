@@ -6,20 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Register | SkyHub</title>
   <link rel="stylesheet" href="/stylesheets/register.css">
-  <script>
-    function handleRegistration() {
-      // Prevent the form from submitting normally
-      event.preventDefault();
 
-      // Perform form validation if needed
-
-      // Submit the form
-      document.getElementById("registerForm").submit();
-      
-      // Redirect to the login page
-      window.location.href = "/login";
-    }
-  </script>
 </head>
 
 <body>
@@ -58,8 +45,8 @@
           <label for="confirmPassword">Confirm Password:</label>
           <input type="password" id="confirmPassword" name="confirmPassword" required>
         </div>
-        <button type="button" class="cta-button" onclick="handleRegistration()">Register</button>
-        <button type="reset" class="cta-button">Reset</button>
+        <button type="submit" class="cta-button">Register</button>
+
       </form>
     </div>
   </section>
@@ -67,3 +54,4 @@
   <% include partials/footer.ejs %>
 </body>
 </html>
+
