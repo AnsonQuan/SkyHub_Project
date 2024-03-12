@@ -18,7 +18,7 @@ router.post("/login", async (req, res) => {
     // If user not found or password doesn't match
     const isMatch = await user.comparePassword(password);
     if (!isMatch) {
-      return res.status(401).json({ error: "Invalid email or password" });
+      return res.status(401).json({ error: "Invalid password" });
     }
 
     // If login successful, generate JWT token
@@ -56,7 +56,8 @@ router.post("/register", async (req, res) => {
     });
     await newUser.save();
 
-    res.status(201).json({ message: "User registered successfully" });
+    window.prompt("Successfully registered");
+    res.redirect('/login');
   } catch (error) {
     console.error("Registration error:", error);
     res.status(500).json({ error: "Internal server error" });

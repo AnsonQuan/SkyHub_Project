@@ -47,7 +47,7 @@ router.get("/login", function (req, res, next) {
 });
 
 /* GET Login page. */
-router.get("/track", function (req, res, next) {
+router.get("/track", isAuthenticated,function (req, res, next) {
   res.render("track", { title: "Track a Flight" });
 });
 
