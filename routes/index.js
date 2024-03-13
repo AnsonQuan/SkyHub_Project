@@ -41,7 +41,7 @@ router.get("/", function (req, res, next) {
 });
 
 /* GET About page. */
-router.get("/about", isAuthenticated, function (req, res, next) {
+router.get("/about", function (req, res, next) {
   const user = req.user || null;
   res.render("about", { title: "About Us", user: user });
 });
@@ -50,6 +50,12 @@ router.get("/about", isAuthenticated, function (req, res, next) {
 router.get("/contact", isAuthenticated, function (req, res, next) {
   const user = req.user || null;
   res.render("contact", { title: "Contact Us", user: user });
+});
+
+/* GET Review page. */
+router.get("/review",  function (req, res, next) {
+  const user = req.user || null;
+  res.render("review", { title: "Write a review", user: user  });
 });
 
 /* GET Register page. */

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Your App Reviews</title>
+    <style>
+        /* Common styling for form elements */
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: calc(100% - 20px); /* Adjust as needed */
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 100px; /* Adjust as needed */
+        }
+
+        /* Styling for stars */
+        .star-container {
+            display: inline-block;
+            font-size: 24px;
+            color: #ccc; /* Empty star color */
+        }
+
+        .star {
+            display: inline-block;
+            margin-right: 4px;
+            cursor: pointer;
+        }
+
+        .star:hover,
+        .star.active {
+            color: #FFD700; /* Highlight color for hovered/selected stars */
+        }
+
+        /* Centering the submit button */
+        button[type="submit"] {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #007bff; /* Default blue color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Form border styling */
+        .add-review form {
+            border: 2px solid #007bff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        /* Styling for displaying user review */
+        .user-review {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        /* Styling for the reviews table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <%- include partials/header.ejs %>
+    <%- include partials/navbar.ejs %>
+
+    <div class="add-review">
+        <h2><center>Add Your Review</h2></center>
+        <form id="reviewForm" action="#" method="post" onsubmit="return submitReview()">
+            <label for="overall">Overall Rating:</label>
+            <div class="star-container" id="starContainer">
+                <span class="star" onclick="setRating(1)">&#9733;</span>
+                <span class="star" onclick="setRating(2)">&#9733;</span>
+                <span class="star" onclick="setRating(3)">&#9733;</span>
+                <span class="star" onclick="setRating(4)">&#9733;</span>
+                <span class="star" onclick="setRating(5)">&#9733;</span>
+            </div>
+            <input type="hidden" name="userRating" id="userRating" value="1">
+
+            <label for="userReview">Written Review:</label>
+            <textarea id="userReview" name="userReview" rows="2" required></textarea>
+
+            <label for="improvements">Areas for Improvement:</label>
+            <textarea id="improvements" name="improvements" rows="2"></textarea>
+
+            <label for="recommendation">Would You Recommend?</label>
+            <select id="recommendation" name="recommendation">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+
+            <label for="suggestions">Any Suggestions:</label>
+            <textarea id="suggestions" name="suggestions" rows="2"></textarea>
+
+            <button type="submit">Submit Review</button>
+        </form>
+
+        <!-- Display user review in a table -->
+        <div id="userReviewContainer" class="user-review">
+            <h3>Reviews</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th>Recommendation</th>
+                        <th>Areas for Improvement</th>
+                        <th>Suggestions</th>
+                    </tr>
+                </thead>
+                <tbody id="userReviews"></tbody>
+            </table>
+        </div>
+    </div>
+    <br>
+    <%- include partials/footer.ejs %>
+
+    <script>
+        function setRating(rating) {
+            const stars = document.querySelectorAll('.star');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.add('active');
+                } else {
+                    star.classList.remove('active');
+                }
+            });
+            document.getElementById('userRating').value = rating;
+        }
+
+        function submitReview() {
+            const userReview = document.getElementById('userReview').value;
+            const userRating = document.getElementById('userRating').value;
+            const recommendation = document.getElementById('recommendation').value;
+            const improvements = document.getElementById('improvements').value;
+            const suggestions = document.getElementById('suggestions').value;
+
+            const tableRow = document.createElement('tr');
+            tableRow.innerHTML = `
+                <td>${userRating}</td>
+                <td>${userReview}</td>
+                <td>${recommendation}</td>
+                <td>${improvements}</td>
+                <td>${suggestions}</td>
+            `;
+
+            document.getElementById('userReviews').appendChild(tableRow);
+
+            // Show the reviews section
+            document.getElementById('userReviewContainer').style.display = 'block';
+
+            return false;
+        }
+    </script>
+</body>
+</html>
