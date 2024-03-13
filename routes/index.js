@@ -53,7 +53,7 @@ router.get("/contact", isAuthenticated, function (req, res, next) {
 });
 
 /* GET Review page. */
-router.get("/review", isAuthenticated, function (req, res, next) {
+router.get("/review",  function (req, res, next) {
   const user = req.user || null;
   res.render("review", { title: "Write a review", user: user  });
 });
