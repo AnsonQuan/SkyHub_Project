@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -69,10 +69,27 @@
 
         /* Styling for displaying user review */
         .user-review {
+            display: none; /* Initially hidden */
             margin-top: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 10px;
+        }
+
+        /* Styling for the reviews table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -111,12 +128,24 @@
             <button type="submit">Submit Review</button>
         </form>
 
-        <!-- Display user review -->
+        <!-- Display user review in a table -->
         <div id="userReviewContainer" class="user-review">
             <h3>Reviews</h3>
-            <div id="userReviews"></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rating</th>
+                        <th>Review</th>
+                        <th>Recommendation</th>
+                        <th>Areas for Improvement</th>
+                        <th>Suggestions</th>
+                    </tr>
+                </thead>
+                <tbody id="userReviews"></tbody>
+            </table>
         </div>
     </div>
+    <br>
     <%- include partials/footer.ejs %>
 
     <script>
@@ -139,18 +168,19 @@
             const improvements = document.getElementById('improvements').value;
             const suggestions = document.getElementById('suggestions').value;
 
-            const reviewContent = `
-                Rating: ${userRating}
-                Review: ${userReview}
-                Recommendation: ${recommendation}
-                Areas for Improvement: ${improvements}
-                Suggestions: ${suggestions}
+            const tableRow = document.createElement('tr');
+            tableRow.innerHTML = `
+                <td>${userRating}</td>
+                <td>${userReview}</td>
+                <td>${recommendation}</td>
+                <td>${improvements}</td>
+                <td>${suggestions}</td>
             `;
 
-            const userReviewElement = document.createElement('p');
-            userReviewElement.textContent = reviewContent;
+            document.getElementById('userReviews').appendChild(tableRow);
 
-            document.getElementById('userReviews').appendChild(userReviewElement);
+            // Show the reviews section
+            document.getElementById('userReviewContainer').style.display = 'block';
 
             return false;
         }
