@@ -8,7 +8,7 @@ const User = require("../models/user");
 // User login route
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-  
+
   try {
     // Check if the user exists in the database
     const user = await User.findOne({ email });
@@ -23,10 +23,9 @@ router.post("/login", async (req, res) => {
 
     // If login successful, generate JWT token
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
-    res.cookie('token', token, { httpOnly: true });
+    res.cookie("token", token, { httpOnly: true });
     // redirect to the home page after successfully
-    res.redirect('/');
-    
+    res.redirect("/");
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -56,7 +55,7 @@ router.post("/register", async (req, res) => {
     });
     await newUser.save();
 
-    res.redirect('/login');
+    res.redirect("/login");
   } catch (error) {
     console.error("Registration error:", error);
     res.status(500).json({ error: "Internal server error" });
