@@ -8,21 +8,25 @@ const User = require("../models/user");
 // User login route
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
-
+  
   try {
     // Check if the user exists in the database
     const user = await User.findOne({ email });
-
-    // If user not found or password doesn't match
-    if (!user || !(await user.comparePassword(password))) {
+    if (!user) {
       return res.status(401).json({ error: "Invalid email or password" });
+    }
+    // If user not found or password doesn't match
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+      return res.status(401).json({ error: "Invalid password" });
     }
 
     // If login successful, generate JWT token
     const token = jwt.sign({ userId: user._id }, "your-secret-key");
-
-    // Send the token as response
-    res.json({ token });
+    res.cookie('token', token, { httpOnly: true });
+    // redirect to the home page after successfully
+    res.redirect('/');
+    
   } catch (error) {
     console.error("Login error:", error);
     res.status(500).json({ error: "Internal server error" });
@@ -52,7 +56,8 @@ router.post("/register", async (req, res) => {
     });
     await newUser.save();
 
-    res.status(201).json({ message: "User registered successfully" });
+    window.prompt("Successfully registered");
+    res.redirect('/login');
   } catch (error) {
     console.error("Registration error:", error);
     res.status(500).json({ error: "Internal server error" });
