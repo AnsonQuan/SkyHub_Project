@@ -6,9 +6,16 @@
       <li><a href='/track'>Track a Flight</a></li>
       <li><a href='/about'>About Us</a></li>
       <li><a href='/contact'>Contact Us</a></li>
-      <li class="login-item">
-        <a href='/login'>Sign in</a>
-      </li>
-
+      <% if (user && user.firstName) { %>
+        <li class="login-item">Hello, <%= user.firstName %></li>
+        <li class="logout">
+          <a href='/logout'>Sign Out</a>
+        </li>
+      <% } else { %>
+        <li class="login-item">
+          <a href='/login'>Sign in</a>
+        </li>
+      <% } %>
     </ul>
-  </nav>
+</nav>
+

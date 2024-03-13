@@ -17,6 +17,18 @@ a {
   position: absolute;
   right: 0; 
   top: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff; 
+  border-radius: 20px; 
+  margin-left: 10px; 
+  border: 2px solid transparent;
+}
+
+#menu .logout {
+  position: absolute;
+  right: 0; 
+  top: 0;
 }
 
 #menu ul,
