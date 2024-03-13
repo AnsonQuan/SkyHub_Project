@@ -13,8 +13,7 @@ router.post("/", async (req, res) => {
       email
     });
     await newCS.save();
-    
-    req.flash('success_msg', 'Your request is successfully sent to our department');
+
     res.redirect("/contact");
   } catch (error) {
     console.error("Error:", error);
