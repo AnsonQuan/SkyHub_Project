@@ -52,6 +52,12 @@ router.get("/contact", isAuthenticated, function (req, res, next) {
   res.render("contact", { title: "Contact Us", user: user });
 });
 
+/* GET Review page. */
+router.get("/review", isAuthenticated, function (req, res, next) {
+  const user = req.user || null;
+  res.render("review", { title: "Write a review", user: user  });
+});
+
 /* GET Register page. */
 router.get("/register", function (req, res, next) {
   const user = req.user || null;
