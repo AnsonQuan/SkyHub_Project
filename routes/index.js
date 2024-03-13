@@ -41,7 +41,7 @@ router.get("/", function (req, res, next) {
 });
 
 /* GET About page. */
-router.get("/about", isAuthenticated, function (req, res, next) {
+router.get("/about", function (req, res, next) {
   const user = req.user || null;
   res.render("about", { title: "About Us", user: user });
 });
